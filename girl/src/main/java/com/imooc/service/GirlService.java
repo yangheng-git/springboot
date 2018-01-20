@@ -1,5 +1,7 @@
-package com.imooc.girl;
+package com.imooc.service;
 
+import com.imooc.Repostory.GirlRepostory;
+import com.imooc.domain.Girl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

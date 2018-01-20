@@ -1,5 +1,6 @@
-package com.imooc.girl;
+package com.imooc.Repostory;
 
+import com.imooc.domain.Girl;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

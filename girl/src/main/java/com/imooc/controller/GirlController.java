@@ -4,8 +4,10 @@ import com.imooc.domain.Girl;
 import com.imooc.Repostory.GirlRepostory;
 import com.imooc.service.GirlService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -50,10 +52,13 @@ public class GirlController {
      * 创建一个女孩
      */
     @PostMapping(value = "/girls")
-    public Girl GirlAdd(@RequestParam(value = "cupSize") String cupSize,@RequestParam(value = "age") Integer age) {
-        Girl girl = new Girl();
-        girl.setAge(age);
-        girl.setCupSize(cupSize);
+    public Girl GirlAdd(@Valid Girl girl, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            /*打印在pojo中设置的提示信息*/
+            System.out.println(bindingResult.getFieldError().getDefaultMessage());
+            return null;
+
+        }
         girl = girlRepostory.save(girl);
         return girl;
     }
